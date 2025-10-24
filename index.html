@@ -20,6 +20,7 @@
             --darker: #0a0a15;
             --light: #e2e8f0;
             --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --coming-soon: #f59e0b;
         }
 
         body {
@@ -295,6 +296,22 @@
             overflow: hidden;
         }
 
+        .game-card.coming-soon {
+            opacity: 0.7;
+            cursor: default;
+        }
+
+        .game-card.coming-soon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .game-card:not(.coming-soon):hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            border-color: var(--primary);
+        }
+
         .game-card::before {
             content: '';
             position: absolute;
@@ -307,20 +324,20 @@
             transition: opacity 0.3s ease;
         }
 
-        .game-card:hover::before {
+        .game-card:not(.coming-soon):hover::before {
             opacity: 1;
-        }
-
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
-            border-color: var(--primary);
         }
 
         .game-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
             background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .game-card.coming-soon .game-icon {
+            background: linear-gradient(135deg, #6b7280, #9ca3af);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -332,8 +349,16 @@
         }
 
         .game-status {
-            color: #10b981;
             font-size: 0.9rem;
+        }
+
+        .game-status.available {
+            color: #10b981;
+        }
+
+        .game-status.soon {
+            color: var(--coming-soon);
+            font-weight: 600;
         }
 
         /* Pricing Section */
@@ -382,6 +407,24 @@
             font-weight: bold;
         }
 
+        .pricing-card.custom {
+            border-color: var(--coming-soon);
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(217, 119, 6, 0.1));
+        }
+
+        .pricing-card.custom::before {
+            content: 'FLEKSIBEL';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            padding: 0.3rem 1.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
         .pricing-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
@@ -391,10 +434,19 @@
             transform: scale(1.05) translateY(-10px);
         }
 
+        .pricing-card.custom:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(245, 158, 11, 0.3);
+        }
+
         .plan-name {
             font-size: 1.5rem;
             margin-bottom: 1rem;
             color: var(--primary);
+        }
+
+        .pricing-card.custom .plan-name {
+            color: var(--coming-soon);
         }
 
         .plan-price {
@@ -402,6 +454,12 @@
             font-weight: bold;
             margin-bottom: 0.5rem;
             background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pricing-card.custom .plan-price {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -424,6 +482,17 @@
         .plan-features i {
             color: #10b981;
             margin-right: 0.5rem;
+        }
+
+        .pricing-card.custom .plan-features i {
+            color: var(--coming-soon);
+        }
+
+        .custom-note {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-top: 1rem;
+            font-style: italic;
         }
 
         /* Features Section */
@@ -817,42 +886,42 @@
                     <i class="fas fa-star"></i>
                 </div>
                 <h3 class="game-name">Genshin Impact</h3>
-                <p class="game-status">✓ Leveling & Exploration</p>
+                <p class="game-status available">✓ Leveling & Exploration</p>
             </div>
             <div class="game-card">
                 <div class="game-icon">
                     <i class="fas fa-crown"></i>
                 </div>
                 <h3 class="game-name">Honkai Star Rail</h3>
-                <p class="game-status">✓ Leveling & Exploration</p>
+                <p class="game-status available">✓ Leveling & Exploration</p>
             </div>
-            <div class="game-card">
+            <div class="game-card coming-soon">
                 <div class="game-icon">
                     <i class="fas fa-dragon"></i>
                 </div>
                 <h3 class="game-name">Blue Archive</h3>
-                <p class="game-status">✓ Leveling & Exploration</p>
+                <p class="game-status soon">Coming Soon</p>
             </div>
-            <div class="game-card">
+            <div class="game-card coming-soon">
                 <div class="game-icon">
                     <i class="fas fa-moon"></i>
                 </div>
                 <h3 class="game-name">Epic Seven</h3>
-                <p class="game-status">✓ Leveling & Exploration</p>
+                <p class="game-status soon">Coming Soon</p>
             </div>
-            <div class="game-card">
+            <div class="game-card coming-soon">
                 <div class="game-icon">
                     <i class="fas fa-fire"></i>
                 </div>
                 <h3 class="game-name">Arknights</h3>
-                <p class="game-status">✓ Leveling & Exploration</p>
+                <p class="game-status soon">Coming Soon</p>
             </div>
-            <div class="game-card">
+            <div class="game-card coming-soon">
                 <div class="game-icon">
                     <i class="fas fa-bolt"></i>
                 </div>
                 <h3 class="game-name">Fate/Grand Order</h3>
-                <p class="game-status">✓ Leveling & Exploration</p>
+                <p class="game-status soon">Coming Soon</p>
             </div>
         </div>
     </section>
@@ -908,6 +977,20 @@
                     <a href="https://wa.me/6289695534856?text=Halo%20DiGems.Market,%20saya%20mau%20paket%20Master" class="btn-primary" style="width: 100%; justify-content: center;" target="_blank">
                         Pesan Sekarang
                     </a>
+                </div>
+                <div class="pricing-card custom">
+                    <h3 class="plan-name">Custom</h3>
+                    <div class="plan-price">Disesuaikan</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Sesuai kebutuhan</li>
+                        <li><i class="fas fa-check"></i> Target khusus</li>
+                        <li><i class="fas fa-check"></i> Waktu fleksibel</li>
+                        <li><i class="fas fa-check"></i> Konsultasi gratis</li>
+                    </ul>
+                    <a href="https://wa.me/6289695534856?text=Halo%20DiGems.Market,%20saya%20mau%20konsultasi%20untuk%20paket%20custom" class="btn-primary" style="width: 100%; justify-content: center;" target="_blank">
+                        <i class="fas fa-comments"></i> Konsultasi Gratis
+                    </a>
+                    <p class="custom-note">Diskusikan kebutuhan spesial Anda dengan tim kami</p>
                 </div>
             </div>
         </div>
@@ -1000,7 +1083,7 @@
                         <div class="author-avatar">R</div>
                         <div class="author-info">
                             <h4>Rizki Ahmad</h4>
-                            <p>Blue Archive Player</p>
+                            <p>Genshin Impact Player</p>
                         </div>
                     </div>
                 </div>
@@ -1048,6 +1131,15 @@
                     Paket Master mendapatkan weekly progress report. Untuk paket lain, bisa request update kapan saja via WhatsApp.
                 </div>
             </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Bagaimana cara pesan paket custom?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Klik tombol "Konsultasi Gratis" pada paket Custom, lalu jelaskan kebutuhan spesial Anda. Tim kami akan membantu membuat paket yang sesuai dengan kebutuhan dan budget Anda.
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1076,7 +1168,7 @@
                 <a href="#">Leveling Genshin Impact</a><br>
                 <a href="#">Leveling Honkai Star Rail</a><br>
                 <a href="#">Exploration Services</a><br>
-                <a href="#">Game Lainnya</a>
+                <a href="#">Custom Package</a>
             </div>
             <div class="footer-section">
                 <h3>Kontak</h3>
@@ -1190,10 +1282,17 @@
         });
 
         // Add hover effect to game cards
-        document.querySelectorAll('.game-card').forEach(card => {
+        document.querySelectorAll('.game-card:not(.coming-soon)').forEach(card => {
             card.addEventListener('click', () => {
                 const gameName = card.querySelector('.game-name').textContent;
                 window.open(`https://wa.me/6289695534856?text=Halo%20DiGems.Market,%20saya%20mau%20joki%20leveling%20${gameName}`, '_blank');
+            });
+        });
+
+        // Add click effect for coming soon cards
+        document.querySelectorAll('.game-card.coming-soon').forEach(card => {
+            card.addEventListener('click', () => {
+                window.open(`https://wa.me/6289695534856?text=Halo%20DiGems.Market,%20saya%20mau%20menanyakan%20tentang%20game%20yang%20akan%20datang`, '_blank');
             });
         });
 
